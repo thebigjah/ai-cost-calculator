@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Cost Calculator, Purcell Ventures | Elijah Purcell</title>
 <meta property="og:title" content="AI Cost Calculator, Purcell Ventures | Elijah Purcell">
-<meta name="description" content="Estimate the hours and dollars a focused AI consulting session would save your team — and how fast it pays back. By Elijah Purcell, Purcell Ventures LLC.">
+<meta name="description" content="Estimate the hours and dollars a focused AI consulting session would save your team, and how fast it pays back. By Elijah Purcell, Purcell Ventures LLC.">
 <style>
   :root {
     --bg: #f5ede0;
@@ -190,7 +190,7 @@
   <header>
     <div class="brand">Purcell Ventures · AI Consulting</div>
     <h1>AI Cost Calculator</h1>
-    <p class="subtitle">Estimate the hours and dollars a focused AI consulting session would save your team — and how fast it pays back.</p>
+    <p class="subtitle">Estimate the hours and dollars a focused AI consulting session would save your team, and how fast it pays back.</p>
   </header>
 
   <div class="card">
@@ -215,7 +215,7 @@
 
     <div class="field">
       <label class="field-label">Average hourly cost per person</label>
-      <p class="field-context">Fully-loaded — salary + benefits + overhead. For most US small businesses: $40-85 for support, $60-110 for ops, $80-150 for managers/specialists.</p>
+      <p class="field-context">Fully-loaded, salary + benefits + overhead. For most US small businesses: $40-85 for support, $60-110 for ops, $80-150 for managers/specialists.</p>
       <div class="input-row">
         <span class="input-prefix">$</span>
         <input type="number" id="hourlyRate" min="15" max="500" value="65" />
@@ -257,21 +257,21 @@
     <div class="result-label">Your Estimated Savings</div>
     <div class="stat-grid">
       <div class="stat-block">
-        <div class="stat-number" id="hoursMonthly">—</div>
+        <div class="stat-number" id="hoursMonthly">, </div>
         <div class="stat-label">hours/mo saved</div>
       </div>
       <div class="stat-block">
-        <div class="stat-number" id="dollarsMonthly">—</div>
+        <div class="stat-number" id="dollarsMonthly">, </div>
         <div class="stat-label">$ value / month</div>
       </div>
       <div class="stat-block">
-        <div class="stat-number" id="annualSaved">—</div>
+        <div class="stat-number" id="annualSaved">, </div>
         <div class="stat-label">$ value / year</div>
       </div>
     </div>
-    <p class="payback-line" id="paybackLine">—</p>
+    <p class="payback-line" id="paybackLine">, </p>
     <div class="assumptions">
-      <strong>How this is calculated:</strong> manual hours/week × team size × automation % × 4.33 weeks/mo = hours saved monthly. Multiply by hourly rate for dollar value. Payback = session cost ÷ monthly $ saved. Conservative — does not count quality improvements, error reduction, employee retention from less tedious work, or compounding from automations that build on each other.
+      <strong>How this is calculated:</strong> manual hours/week × team size × automation % × 4.33 weeks/mo = hours saved monthly. Multiply by hourly rate for dollar value. Payback = session cost ÷ monthly $ saved. Conservative, does not count quality improvements, error reduction, employee retention from less tedious work, or compounding from automations that build on each other.
     </div>
   </div>
 
@@ -289,21 +289,21 @@ const $ = (id) => document.getElementById(id);
 const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
 const fmtMoney = (n) => "$" + fmt(n);
 
-// Industry presets — realistic defaults observed in the field.
+// Industry presets, realistic defaults observed in the field.
 // Reasoning baked into the README so they're defensible.
 const PRESETS = {
   realestate: { team: 6, rate: 55, manual: 12, auto: 65, cost: 1500,
-    desc: "Real estate office — agents + admin. Listing descriptions, market reports, follow-ups, contract drafts." },
+    desc: "Real estate office, agents + admin. Listing descriptions, market reports, follow-ups, contract drafts." },
   dental: { team: 8, rate: 45, manual: 10, auto: 55, cost: 1500,
-    desc: "Dental practice — front desk + clinical admin. Insurance pre-auth, scheduling reminders, treatment-plan summaries, patient comms." },
+    desc: "Dental practice, front desk + clinical admin. Insurance pre-auth, scheduling reminders, treatment-plan summaries, patient comms." },
   law: { team: 5, rate: 95, manual: 14, auto: 60, cost: 2500,
-    desc: "Law firm — partners + paralegals. Document review, brief drafting, intake forms, case summaries. Higher rate, higher automatable hours." },
+    desc: "Law firm, partners + paralegals. Document review, brief drafting, intake forms, case summaries. Higher rate, higher automatable hours." },
   marketing: { team: 4, rate: 75, manual: 18, auto: 70, cost: 1500,
-    desc: "Marketing agency — content + ops. Caption writing, ad copy, scheduling, reporting, client deliverables. Highest automation potential." },
+    desc: "Marketing agency, content + ops. Caption writing, ad copy, scheduling, reporting, client deliverables. Highest automation potential." },
   ecommerce: { team: 3, rate: 60, manual: 15, auto: 70, cost: 1500,
-    desc: "Ecommerce brand — operator + customer service. Product descriptions, support emails, social posts, returns workflows." },
+    desc: "Ecommerce brand, operator + customer service. Product descriptions, support emails, social posts, returns workflows." },
   solo: { team: 1, rate: 100, manual: 20, auto: 65, cost: 500,
-    desc: "Solo founder — you wear every hat. Outbound, content, admin, follow-ups. Lower session cost reflects 1-on-1 pricing." },
+    desc: "Solo founder, you wear every hat. Outbound, content, admin, follow-ups. Lower session cost reflects 1-on-1 pricing." },
 };
 
 function loadPreset(key) {
@@ -354,9 +354,9 @@ function recalc() {
     } else if (months < 6) {
       payback = `At those inputs, the session pays back in <span class="payback-strong">~${months.toFixed(1)} months</span>. After that, the savings compound monthly.`;
     } else if (months < 24) {
-      payback = `At those inputs, the session pays back in <span class="payback-strong">~${months.toFixed(1)} months</span> — slower than typical because either the team is small or manual hours are low. Worth doing if the work itself drains morale.`;
+      payback = `At those inputs, the session pays back in <span class="payback-strong">~${months.toFixed(1)} months</span>, slower than typical because either the team is small or manual hours are low. Worth doing if the work itself drains morale.`;
     } else {
-      payback = `At those inputs, the payback is <span class="payback-strong">~${months.toFixed(1)} months</span> — too slow to justify on time-savings alone. Consider a smaller-scope $175/hr 1-on-1 instead.`;
+      payback = `At those inputs, the payback is <span class="payback-strong">~${months.toFixed(1)} months</span>, too slow to justify on time-savings alone. Consider a smaller-scope $175/hr 1-on-1 instead.`;
     }
   }
   $("paybackLine").innerHTML = payback;
